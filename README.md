@@ -9,8 +9,9 @@ Create Client Credentials (Settings -> Create Client)  <br>
 ![Record Creds](https://github.com/adamdrayer/fga-banking-sample/assets/48683398/d5c918f3-31df-438e-b35d-bf6c9e05bf7d)
 
 ## Importing FGA Data Model and Tuples  <br>
-### Install FGA CLI (https://github.com/openfga/cli )  <br>
-### Set CLI config file (i.e, ~/.fga.yaml for Mac)  <br>
+Install FGA CLI (https://github.com/openfga/cli )  <br>
+Set CLI config file (i.e, ~/.fga.yaml for Mac)  <br>
+
 #### SAMPLE CLI CONFIG FILE  <br>
 > Note: This example ~/.fga.yaml for Okta FGA <br>
 > api-url: https://api.us1.fga.dev <br>
