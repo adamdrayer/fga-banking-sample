@@ -1,0 +1,104 @@
+name: ""
+model: |+
+    model
+      schema 1.1
+
+    type employee
+
+    type customer
+
+    type bank
+      relations
+        define account_manager: [employee]
+        define customer: [customer]
+        define transfer_limit_policy: [bank#customer with transfer_limit_policy, bank#account_manager with transfer_limit_policy, customer with transfer_limit_policy]
+
+    type account
+      relations
+        define account_manager: [employee]
+        define bank: [bank]
+        define can_transfer: (owner or account_manager or delegate) and transfer_limit_policy from bank
+        define delegate: [customer]
+        define owner: [customer]
+        define trader: [employee, customer] or owner or delegate
+        define viewer: [customer] or account_manager or owner or delegate
+
+    condition transfer_limit_policy(transaction_amount: double, transaction_limit: double) {
+      transaction_amount <= transaction_limit
+    }
+
+tuples:
+    - user: employee:bob
+      relation: account_manager
+      object: account:123
+    - user: bank:acme
+      relation: bank
+      object: account:123
+    - user: customer:anne
+      relation: owner
+      object: account:123
+    - user: employee:bob
+      relation: account_manager
+      object: account:456
+    - user: bank:acme
+      relation: bank
+      object: account:456
+    - user: customer:fred
+      relation: owner
+      object: account:456
+    - user: employee:bob
+      relation: trader
+      object: account:456
+    - user: employee:bob
+      relation: account_manager
+      object: account:789
+    - user: bank:acme
+      relation: bank
+      object: account:789
+    - user: customer:caroline
+      relation: owner
+      object: account:789
+    - user: employee:bob
+      relation: trader
+      object: account:789
+    - user: bank:acme
+      relation: bank
+      object: account:xyz
+    - user: customer:caroline
+      relation: delegate
+      object: account:xyz
+    - user: customer:mark
+      relation: owner
+      object: account:xyz
+    - user: employee:bob
+      relation: account_manager
+      object: bank:acme
+    - user: customer:anne
+      relation: customer
+      object: bank:acme
+    - user: customer:caroline
+      relation: customer
+      object: bank:acme
+    - user: customer:fred
+      relation: customer
+      object: bank:acme
+    - user: customer:mark
+      relation: customer
+      object: bank:acme
+    - user: bank:acme#account_manager
+      relation: transfer_limit_policy
+      object: bank:acme
+      condition:
+        name: transfer_limit_policy
+        context:
+            transaction_limit: 1000
+    - user: bank:acme#customer
+      relation: transfer_limit_policy
+      object: bank:acme
+      condition:
+        name: transfer_limit_policy
+        context:
+            transaction_limit: 100
+tests:
+    - name: Tests
+      check: []
