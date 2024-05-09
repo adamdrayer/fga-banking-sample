@@ -24,3 +24,12 @@
 ### Run Import command
 > fga store import --file ./fga-banking.yaml <br>
 
+### Getting an API bearer token for API Explorer Authentication <br>
+Replace <ClientID> & <ClientSecret> below and run this command <br>
+> curl -X POST \ <br>
+>    https://fga.us.auth0.com/oauth/token \ <br>
+>    -H 'content-type: application/json' \ <br>
+>    -d '{"client_id":"<clientID>","client_secret":"<ClientSecret>","audience":"https://api.us1.fga.dev/","grant_type":"client_credentials"}' <br>
+   
+The response will contain a very long API token that can be used in the Swaggger API Explorer: <br>
+ https://docs.fga.dev/api/service#/ <br>
