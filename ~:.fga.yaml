@@ -1,8 +1,8 @@
 # Note: This example ~/.fga.yaml for Okta FGA
 api-url: https://api.us1.fga.dev
-client-id: 4n9cb6suRcxVoUi48S8DQ91C0oZmOy3d
-client-secret: pf1UGIo2R2PqoBNfjofc9aUQJUjzUyF0fbU6l91N0GnubkMrX-25f9LE0fF86gFc
+client-id: <clientId>
+client-secret: <clientSecret>
 api-audience: https://api.us1.fga.dev/
 api-token-issuer: fga.us.auth0.com
-store-id: 01HX4MA3PGZY0P57H0VEMKN7GM
+store-id: <storeId>
 
