@@ -11,4 +11,15 @@
 ## Importing FGA Data Model and Tuples
 ### Install FGA CLI (https://github.com/openfga/cli )
 ### Set CLI config file (i.e, ~/.fga.yaml for Mac)
+#### SAMPLE CLI CONFIG FILE
+#### Note: This example ~/.fga.yaml for Okta FGA
+#### api-url: https://api.us1.fga.dev
+#### client-id: <clientid>
+#### client-secret: <clientSecret>
+#### api-audience: https://api.us1.fga.dev/
+#### api-token-issuer: fga.us.auth0.com
+##### store-id: <store-id>
+
 ### Run Import command
+#### fga store import --file ./fga-banking.yaml
+
