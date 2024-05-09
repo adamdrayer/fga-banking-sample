@@ -25,7 +25,9 @@
 > fga store import --file ./fga-banking.yaml <br>
 
 ### Getting an API bearer token for API Explorer Authentication <br>
-Replace <ClientID> & <ClientSecret> below and run this command <br>
+
+#### Replace \<ClientID\> & \<ClientSecret\> below and run this command <br>
+
 > curl -X POST \ <br>
 >    https://fga.us.auth0.com/oauth/token \ <br>
 >    -H 'content-type: application/json' \ <br>
